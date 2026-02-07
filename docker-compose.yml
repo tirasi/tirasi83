@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: asteroid-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./asteroid.db
+      - SECRET_KEY=${SECRET_KEY:-wKSqeq0zhecHL0AdjVbhZbfymeFLXymKbybN69de}
+      - NASA_API_KEY=${NASA_API_KEY:-DEMO_KEY}
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+    volumes:
+      - backend-data:/app
+    networks:
+      - asteroid-network
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'import requests; requests.get(\"http://localhost:8000/health\")' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./cosmic-watch-frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_URL=/api
+    container_name: asteroid-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - asteroid-network
+
+networks:
+  asteroid-network:
+    driver: bridge
+
+volumes:
+  backend-data:
+    driver: local

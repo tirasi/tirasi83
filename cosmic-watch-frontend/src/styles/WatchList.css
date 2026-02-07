@@ -1,0 +1,246 @@
+.watchlist-page {
+  padding: 40px 20px;
+  animation: fadeIn 0.6s ease-in;
+}
+
+.watchlist-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.watchlist-header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.watchlist-header p {
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+.empty-state {
+  background: var(--card-bg);
+  padding: 80px 40px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.empty-state h2 {
+  font-size: 32px;
+  color: var(--primary-orange);
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+.watchlist-card {
+  background: var(--card-bg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: all 0.3s;
+}
+
+.watchlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.watchlist-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.watchlist-header-section h3 {
+  font-size: 28px;
+  color: var(--primary-orange);
+  margin-bottom: 10px;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  background: var(--danger);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.approach-countdown {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
+  background: rgba(255, 107, 53, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.countdown-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.countdown-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.countdown-info {
+  flex: 1;
+}
+
+.countdown-info p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.approach-date {
+  color: var(--primary-orange) !important;
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+.watchlist-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.watchlist-actions {
+  display: flex;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.alert-toggle {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.alert-toggle:hover {
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+.alert-toggle.active {
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+  color: white;
+  border-color: var(--secondary-orange);
+  animation: alertPulse 2s ease-in-out infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 107, 53, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.8); }
+}
+
+.view-details-btn {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid var(--primary-orange);
+  color: var(--primary-orange);
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.view-details-btn:hover {
+  background: var(--primary-orange);
+  color: white;
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .watchlist-header h1 {
+    font-size: 36px;
+  }
+
+  .watchlist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .approach-countdown {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .watchlist-actions {
+    flex-direction: column;
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+  }
+}

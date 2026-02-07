@@ -1,0 +1,52 @@
+.orbit-view-container {
+  margin: 40px 0;
+}
+
+.orbit-toggle-btn {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.orbit-view-wrapper {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary-orange);
+  border-radius: 12px;
+  padding: 20px;
+  animation: fadeIn 0.5s;
+}
+
+.orbit-canvas {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+}
+
+.orbit-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@media (max-width: 768px) {
+  .orbit-canvas {
+    height: 400px;
+  }
+}

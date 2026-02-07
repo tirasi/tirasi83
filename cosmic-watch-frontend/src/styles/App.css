@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-orange: #FF6B22;
+  --secondary-orange: #ff8c42;
+  --dark-bg: #0a0a0a;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --danger: #ff4444;
+  --success: #44ff44;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0a0a;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.border-bits {
+  position: relative;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  clip-path: none;
+}
+
+.border-bits::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange), var(--primary-orange));
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.3s;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.border-bits:hover::before {
+  opacity: 0.8;
+}
+
+.glow {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+input, textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-orange);
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 24px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 107, 34, 0.2);
+  border-color: rgba(255, 107, 34, 0.3);
+}
+
+.btn {
+  background: #FF6B22;
+  color: #000000;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 107, 34, 0.2);
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #ff8c42;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 34, 0.4);
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.hazard-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hazard-true {
+  background: rgba(255, 68, 68, 0.2);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  animation: hazardPulse 1.5s ease-in-out infinite;
+}
+
+.hazard-false {
+  background: rgba(68, 255, 68, 0.2);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+@keyframes hazardPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.8); }
+}
+
+.loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 107, 53, 0.3);
+  border-top-color: var(--primary-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+}
